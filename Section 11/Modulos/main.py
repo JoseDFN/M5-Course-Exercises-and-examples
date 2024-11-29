@@ -1,16 +1,9 @@
-from mi_paquete import modulo1
-import datetime as dt
-from datetime import date, datetime
+from colorama import init, Fore
+
+init()  # Inicializar colorama
 
 if (__name__ == "__main__"):
-    hoy = dt.datetime.now()
-    hoy2 = date.today()
-    ahora = datetime.now()
-
-    print (f"Hoy es {hoy2} \nHoy es {hoy}")
-    print (f"ahora es {ahora}")
-
-    modulo1.saludar()
-
-    print(__name__)
-    print("Mensaje solo mostrado si el prorama se ejecuta desde el archivo principal")
+    print(Fore.RED + "Este es un mensaje en color rojo")
+    print(Fore.GREEN + "Este es un mensaje en color verde")
+    print(Fore.YELLOW + "Este es un mensaje en color amarillo")
+    print(Fore.BLUE + "Este es un mensaje en color azul")
