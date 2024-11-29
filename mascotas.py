@@ -16,24 +16,52 @@ Animal2 = Animal("Gato", "6 Meses")
 class Mascota(Animal):
     def __init__(self, especie, edad, nombre):
         super().__init__(especie, edad)
-        self.__nombre = nombre
-#encapsulacion
-    def get_nombre(self):
-        return self.__nombre
-    
-    def set_nombre (self, nombre):
-        self.__nombre = nombre
+        self.nombre = nombre
     
     def __str__(self):
-        return f"Mascota[Nombre: {self.__nombre}, Especie: {self.especie}, Edad: {self.edad}]"
+        return f"Mascota[Nombre: {self.nombre}, Especie: {self.especie}, Edad: {self.edad}]"
 
-mascota = Mascota("Perro", "6 Meses", "IDK")
 
-print (mascota)
 
-mascota.edad = "2 años"
-#modificador __ solo permite que la clase o propiedad sea accedidad desde la funcion
-mascota.set_nombre("idk")
-print (mascota.get_nombre())
+class regMascotas:
+    """Clase para realizar el registro de mascotas"""
+    def __init__(self) -> None:
+        self.mascotas = []
+    """
+    Agregar mascotas al registro
+    Parametro: 
+    mascota (Mascota) La mascota a agregar al registro    
+    """
+    def agregar_mascota(self, mascota):
+        self.mascotas.append(mascota)
 
-print(mascota)
+    def listar_mascotas (self):
+        if self.mascotas:
+            print(" Lista de mascotas \n", "="*30)
+            for i, mascota in enumerate(self.mascotas, start=1):
+                print(f"{i}. {mascota}")
+        else:
+            print("No hay mascotas registradas")
+
+    def editar_mascota(self, indice, nueva_mascota):
+
+        """
+        edita una mascota del registro
+
+        parametros:
+        indice(int) -> indice de la mascota a editar
+        nueva_mascota (Mascota) -> La nueva informacion de la mascota
+        """
+
+        if indice< 0 or indice>= len(self.mascotas):
+            print("No hay registro con este indice")
+        else:
+            self.mascotas[indice] = nueva_mascota
+            print("Informacion de la mascota editada correctamente")
+
+    def eliminar_mascota (self, indice):
+        if indice< 0 or indice>= len(self.mascotas):
+            print("No hay registro con este indice")
+        else:
+            del self.mascotas[indice]
+            print("Mascota eliminada correctamente")
