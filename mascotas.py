@@ -16,25 +16,24 @@ Animal2 = Animal("Gato", "6 Meses")
 class Mascota(Animal):
     def __init__(self, especie, edad, nombre):
         super().__init__(especie, edad)
-        self.nombre = nombre
-
-    def hablar(self):
-        pass
+        self.__nombre = nombre
+#encapsulacion
+    def get_nombre(self):
+        return self.__nombre
+    
+    def set_nombre (self, nombre):
+        self.__nombre = nombre
     
     def __str__(self):
-        return f"Mascota[Nombre: {self.nombre}, Especie: {self.especie}, Edad: {self.edad}]"
+        return f"Mascota[Nombre: {self.__nombre}, Especie: {self.especie}, Edad: {self.edad}]"
 
+mascota = Mascota("Perro", "6 Meses", "IDK")
 
-class Perro(Mascota):
-    def hablar(self):
-        return "Woof"
+print (mascota)
 
-class Gato(Mascota):
-    def hablar(self):
-        return "Meow"
+mascota.edad = "2 años"
+#modificador __ solo permite que la clase o propiedad sea accedidad desde la funcion
+mascota.set_nombre("idk")
+print (mascota.get_nombre())
 
-p = Perro("Perro", "12 meses", "Bobby")
-g = Gato("Gato", "13 meses", "Pelusa")
-
-print (p.hablar())
-print (g.hablar())
+print(mascota)
